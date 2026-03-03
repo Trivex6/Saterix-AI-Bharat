@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Saterix AI – UI Preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0e1117;
+    --surface: #1a1c24;
+    --danger: #ff4b4b;
+    --safe: #28a745;
+    --yellow: #f1c40f;
+    --text: #ffffff;
+    --muted: #8b8fa8;
+    --border: #2a2d3a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: #12141c;
+    border-right: 1px solid var(--border);
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    flex-shrink: 0;
+  }
+
+  .sidebar-logo {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sidebar-status {
+    background: #1e2130;
+    border: 1px solid var(--yellow);
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: var(--yellow);
+    font-weight: 700;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    animation: pulse-yellow 2s infinite;
+  }
+
+  @keyframes pulse-yellow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(241,196,15,0.3); }
+    50% { box-shadow: 0 0 0 6px rgba(241,196,15,0); }
+  }
+
+  .sidebar-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: var(--yellow);
+    flex-shrink: 0;
+  }
+
+  .about-box {
+    background: #1e2130;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+    border-left: 3px solid var(--danger);
+  }
+
+  .about-box strong {
+    color: var(--text);
+    display: block;
+    margin-bottom: 6px;
+    font-size: 0.85rem;
+  }
+
+  /* ── MAIN ── */
+  .main {
+    flex: 1;
+    padding: 40px 48px;
+    max-width: 780px;
+  }
+
+  .page-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .page-subtitle {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 32px;
+  }
+
+  .label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  textarea {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    padding: 16px;
+    resize: vertical;
+    min-height: 130px;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  textarea:focus { border-color: var(--danger); }
+
+  textarea::placeholder { color: var(--muted); }
+
+  .scan-btn {
+    margin-top: 16px;
+    width: 100%;
+    padding: 16px;
+    background: var(--danger);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: 'Space Mono', monospace;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: background 0.2s, transform 0.1s;
+  }
+
+  .scan-btn:hover { background: #e03c3c; transform: translateY(-1px); }
+  .scan-btn:active { transform: translateY(0); }
+
+  /* ── VERDICTS ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 32px 0;
+  }
+
+  .verdict-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .threat-box {
+    padding: 20px 24px;
+    border-radius: 10px;
+    border: 2px solid var(--danger);
+    background: var(--surface);
+    margin-bottom: 20px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .threat-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--danger);
+    margin-bottom: 10px;
+  }
+
+  .safe-box {
+    padding: 20px 24px;
+    border-radius: 10px;
+    border: 2px solid var(--safe);
+    background: var(--surface);
+    margin-bottom: 20px;
+    animation: fadeIn 0.4s ease;
+  }
+
+  .safe-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--safe);
+    margin-bottom: 10px;
+  }
+
+  .verdict-text {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #c8cad8;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── DEMO TABS ── */
+  .tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .tab {
+    padding: 7px 18px;
+    border-radius: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    transition: all 0.2s;
+  }
+
+  .tab.active-danger { background: rgba(255,75,75,0.12); border-color: var(--danger); color: var(--danger); }
+  .tab.active-safe   { background: rgba(40,167,69,0.12); border-color: var(--safe); color: var(--safe); }
+  .tab:not(.active-danger):not(.active-safe):hover { color: var(--text); border-color: #555; }
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <div class="sidebar-logo">🛡️ Saterix AI</div>
+
+  <div class="sidebar-status">
+    <div class="sidebar-dot"></div>
+    System Status: Local Prototype Mode
+  </div>
+
+  <div class="about-box">
+    <strong>About Saterix</strong>
+    Saterix is a cognitive firewall for rural users — designed to detect social engineering scams and protect communities across Bharat.
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+  <div class="page-title">🛡️ Saterix AI – Threat Analysis</div>
+  <p class="page-subtitle">Paste suspicious SMS or messages below to scan for scams.</p>
+
+  <div class="label">Suspicious Message</div>
+  <textarea placeholder="e.g. Your electricity will be disconnected. Call now to pay…"></textarea>
+  <button class="scan-btn">🔍 SCAN FOR THREATS</button>
+
+  <hr class="divider"/>
+
+  <!-- Demo output section -->
+  <div class="verdict-label">Sample Output Preview</div>
+  <div class="tabs">
+    <button class="tab active-danger" onclick="show('danger')">⚠️ Dangerous Example</button>
+    <button class="tab" id="safe-tab" onclick="show('safe')">✅ Safe Example</button>
+  </div>
+
+  <div id="danger-verdict">
+    <div class="threat-box">
+      <div class="threat-header">⚠️ THREAT DETECTED</div>
+      <div class="verdict-text">
+        🛡️ <strong>SATERIX VERDICT: DANGEROUS</strong><br/><br/>
+        <strong>English:</strong> This message uses classic social engineering tactics — urgency ("disconnected"), fear of authority, and a direct call to action. These are hallmarks of utility scams targeting rural users.<br/><br/>
+        <strong>Hindi:</strong> यह संदेश एक स्कैम है। "बिजली काटी जाएगी" जैसे डरावने शब्दों का उपयोग करके आपको जल्दी में गलत कदम उठाने पर मजबूर किया जा रहा है।<br/><br/>
+        <em style="color:var(--muted); font-size:0.82rem;">Keywords detected: electricity, disconnected, call, urgent</em>
+      </div>
+    </div>
+  </div>
+
+  <div id="safe-verdict" style="display:none">
+    <div class="safe-box">
+      <div class="safe-header">✅ SAFE</div>
+      <div class="verdict-text">
+        🛡️ <strong>SATERIX VERDICT: SAFE (Local Scan)</strong><br/><br/>
+        No high-pressure keywords or social engineering patterns detected in this message. It appears to be a normal communication.<br/><br/>
+        <em style="color:var(--muted); font-size:0.82rem;">No threat indicators found.</em>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<script>
+  function show(type) {
+    document.getElementById('danger-verdict').style.display = type === 'danger' ? 'block' : 'none';
+    document.getElementById('safe-verdict').style.display   = type === 'safe'   ? 'block' : 'none';
+    document.querySelector('.tab.active-danger')?.classList.remove('active-danger');
+    document.querySelector('.tab.active-safe')?.classList.remove('active-safe');
+    if (type === 'danger') document.querySelectorAll('.tab')[0].classList.add('active-danger');
+    else                   document.querySelectorAll('.tab')[1].classList.add('active-safe');
+  }
+</script>
+</body>
+</html>

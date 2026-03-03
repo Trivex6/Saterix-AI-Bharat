@@ -1,0 +1,18 @@
+# Streamlit secrets (CRITICAL)
+.streamlit/secrets.toml
+
+# Python cache and environment
+__pycache__/
+*.pyc
+.env
+venv/
+.venv/
+env/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
