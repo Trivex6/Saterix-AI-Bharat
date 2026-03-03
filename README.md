@@ -53,19 +53,18 @@ Instead of a single check, Saterix runs every message through a 3-layer security
 ## 🚀 Installation & Usage
 
 1. **Clone the repository:**
-   ```bash
    git clone https://github.com/yoyobabaji009/Saterix-AI-Bharat
 
-Install dependencies
+2. **Install dependencies:**
 pip install -r requirements.txt
 
-3. Configure Secrets
+3. **Configure Secrets:**
 Create a folder named .streamlit and a file inside it called secrets.toml:
 
 GROQ_API_KEY = "your_groq_key_here"
 AWS_ACCESS_KEY_ID = "your_aws_key_here"
 AWS_SECRET_ACCESS_KEY = "your_aws_secret_here"
 
-4. Run Saterix
+4. **Run Saterix**
 streamlit run app.py
 
