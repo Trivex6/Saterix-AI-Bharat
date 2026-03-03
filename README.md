@@ -11,60 +11,61 @@ Saterix is a multi-layered security engine designed to protect vernacular users 
 
 ---
 
-## ⚙️ System Workflow
+## ⚙️ The Saterix Defense-in-Depth
 
-The architecture follows a "Defense-in-Depth" approach. Simple threats (malicious links) are caught by local heuristics, while complex social engineering is analyzed by the Llama 3.3 engine.
+Instead of a single check, Saterix runs every message through a 3-layer security tunnel to ensure maximum protection for rural users.
 
-```mermaid
-graph TD
-    A[User Input: SMS/Voice] --> B{Layer 1: Heuristics}
-    B -- Suspicious Link --> C[🚨 FLAG: DANGEROUS]
-    B -- Clear --> D[Layer 2: Hardened Context]
-    D --> E[XML Isolation: UNTRUSTED_DATA]
-    E --> F[Groq LPU: Llama 3.3 70B]
-    F --> G{Intent Analysis}
-    G -- Malicious Pattern --> C
-    G -- Safe Pattern --> H[✅ FLAG: SAFE]
-    
-    style C fill:#FF4B4B,stroke:#333,stroke-width:2px,color:#fff
-    style H fill:#28a745,stroke:#333,stroke-width:2px,color:#fff
-    style F fill:#f96,stroke:#333,stroke-width:4px
+### **Layer 1: Local Heuristics (Instant Block)**
+* **Regex Scanning**: Detects suspicious URL shorteners (bit.ly, t.me, wa.me).
+* **Domain Watch**: Blocks impersonated utility domains (e.g., `wbsedcl-pay-bills.com`).
+* **Response**: Instant flagging with **LOCAL_HEURISTICS** engine.
 
+### **Layer 2: Instruction Isolation (Hardened)**
+* **XML Encapsulation**: Wraps user input in `<UNTRUSTED_DATA>` tags to prevent Prompt Injection.
+* **System Guard**: Prevents the LLM from following malicious instructions like "Ignore all previous commands."
 
-🚀 Key Features:-
-LPU-Powered Inference: Achieves ~280ms response latency using Llama 3.3 (70B) via Groq LPU™, allowing for instant threat detection.
-Hardened Security: Implements XML-tag isolation and system-prompt hardening to neutralize "Prompt Injection" and instruction-overriding attacks.
-Bimodal Accessibility: Integrated Speech-to-Text (STT) support, allowing rural users to scan messages via voice—bridging the digital literacy gap.
-Vernacular Intelligence: Specifically tuned for Bengali, Hindi, and Hinglish social engineering patterns common in West Bengal.
+### **Layer 3: Cognitive Intent Engine (LPU Powered)**
+* **Groq LPU™**: Leverages **Llama 3.3 (70B)** with a **~280ms response time**.
+* **Social Engineering Detection**: Identifies psychological triggers like artificial urgency and fear in **Bengali, Hindi, and Hinglish**.
 
-🏗️ Technical Architecture:-
-Saterix is built on a modular stack designed for scalability and sub-second response times:
-L1: Heuristic Engine: Instant regex-based scanning for dangerous URL shorteners (bit.ly, t.me) and impersonated utility domains.
-L2: Instruction Layering: Encapsulates user input within <UNTRUSTED_DATA> delimiters, ensuring the LLM treats input as data, not commands.
-L3: Cognitive Intent Engine: Deep semantic analysis via Groq to detect psychological triggers like artificial urgency, threat of service disconnection, and unofficial contact channels.
-Backend: Python-based Streamlit application hosted with integrated AWS DynamoDB connectivity for the Vernacular Threat Matrix.
+---
 
-🛠️ Tech Stack:-
-Frontend: Streamlit
-LLM Engine: Llama 3.3 70B (Groq LPU)
-Database: Amazon DynamoDB (Vernacular Threat Matrix)
-Voice Engine: Streamlit Mic Recorder (Speech-to-Text)
-Security Layer: XML Delimiter Hardening
+## 🚀 Key Features
 
-🚀 Installation & Usage:-
+* **⚡ LPU-Powered Inference:** Extreme speed (~280ms) ensures the user is warned before they click.
+* **🎙️ Bimodal Accessibility:** Native **Speech-to-Text (STT)** integration for users with low digital literacy.
+* **🇮🇳 Vernacular Intelligence:** Optimized for the unique threat landscape of rural West Bengal and India.
 
-Clone the repository:
+---
 
-Bash
-git clone [https://github.com/yoyobabaji009/Saterix-AI-Bharat](https://github.com/yoyobabaji009/Saterix-AI-Bharat)
+## 🛠️ Tech Stack
 
-Install dependencies:
-Bash
+| Component | Technology |
+| :--- | :--- |
+| **Frontend** | Streamlit |
+| **LLM Engine** | Llama 3.3 70B (**Groq LPU**) |
+| **Database** | Amazon DynamoDB |
+| **Voice Engine** | Streamlit Mic Recorder (STT) |
+| **Security Layer** | XML Delimiter Hardening |
+
+---
+
+## 🚀 Installation & Usage
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yoyobabaji009/Saterix-AI-Bharat
+
+Install dependencies
 pip install -r requirements.txt
 
-Configure Secrets:
-Create .streamlit/secrets.toml and add your GROQ_API_KEY and AWS_CREDENTIALS.
+3. Configure Secrets
+Create a folder named .streamlit and a file inside it called secrets.toml:
 
-Run Saterix:
-Bash
+GROQ_API_KEY = "your_groq_key_here"
+AWS_ACCESS_KEY_ID = "your_aws_key_here"
+AWS_SECRET_ACCESS_KEY = "your_aws_secret_here"
+
+4. Run Saterix
 streamlit run app.py
+
