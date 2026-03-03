@@ -56,26 +56,25 @@ Saterix runs every message through a 3-layer security tunnel to ensure maximum p
 git clone [https://github.com/yoyobabaji009/Saterix-AI-Bharat](https://github.com/yoyobabaji009/Saterix-AI-Bharat)
 cd Saterix-AI-Bharat
 
-2. **Install dependencies:**
+2. Install dependencies:
 pip install -r requirements.txt
 
-3. **Configure Secrets:**
+3. Configure Secrets:
 Create a folder named .streamlit and a file inside it called secrets.toml:
 
-**GROQ_API_KEY = "your_groq_key_here"**
-**AWS_ACCESS_KEY_ID = "your_aws_key_here"**
-**AWS_SECRET_ACCESS_KEY = "your_aws_secret_here"**
+GROQ_API_KEY = "your_groq_key_here"
+AWS_ACCESS_KEY_ID = "your_aws_key_here"
+AWS_SECRET_ACCESS_KEY = "your_aws_secret_here"
 
-4. **Run Saterix**
+4. Run Saterix
 streamlit run app.py
 
----
-## Developed by Puskar Das & Team Loop Lords
 
-### **Final GitHub Push**
+Developed by Puskar Das & Team Loop Lords
+
+ **Final GitHub Push**
 To apply this fixed version to your repository, run these commands in your terminal:
 ```bash
 git add README.md
 git commit -m "🔧 Fix: Resolved Mermaid rendering error and optimized document layout"
 git push origin main
----
