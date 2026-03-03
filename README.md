@@ -10,6 +10,7 @@
 Saterix is a multi-layered security engine designed to protect vernacular users from social engineering scams (WBSEDCL utility fraud, banking phishing, and KYC scams). By leveraging ultra-fast LPU inference and behavioral analysis, Saterix intercepts threats in real-time before users can be manipulated.
 
 ---
+**Live at:** [https://saterix-ai-bharat-6rybjtfn4gwfjmmwgqlg7j.streamlit.app/](https://saterix-ai-bharat-6rybjtfn4gwfjmmwgqlg7j.streamlit.app/)
 
 ## ⚙️ The Saterix Defense-in-Depth
 
