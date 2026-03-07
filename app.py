@@ -102,7 +102,7 @@ _, col_center, _ = st.columns([0.1, 0.8, 0.1])
 
 with col_center:
     st.title("🛡️ Saterix Threat Engine")
-    st.caption("TEAM LOOP LORDS | HACK-PROOF VERNACULAR DEFENSE")
+    st.caption("TEAM LOOP LORDS | AI-POWERED VERNACULAR FRAUD DETECTION")
 
     # Metrics
     m1, m2, m3 = st.columns(3)
