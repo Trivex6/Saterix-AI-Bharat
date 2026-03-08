@@ -77,5 +77,5 @@ Final GitHub Push
 To apply this fixed version to your repository, run these commands in your terminal:
 ```bash
 git add README.md
-git commit -m "🔧 Fix: Resolved Mermaid rendering error and optimized document layout"
+git commit -m 
 git push origin main
